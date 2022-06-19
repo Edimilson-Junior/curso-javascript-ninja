@@ -1,3 +1,5 @@
+(() => {
+'use strict';
 /*
 1. Envolva todo o conteúdo desse desafio em uma IIFE.
 2. Adicione a diretiva 'use strict';
@@ -13,7 +15,12 @@ Ex: no caso do nome ser "Fernando", deve mostrar as frases:
 - "e é a 2ª letra do meu nome."
 E assim por diante, até a última.
 */
+var name = 'Edimilson';
+
 console.log( 'As letras do seu nome:' );
+for( var i = 0; name[i] !== undefined; i++){
+    console.log( '' + name[i] + ' é a ' + ( i + 1 ) + 'ª letra do meu nome.' );
+}
 // ?
 
 /*
@@ -28,7 +35,14 @@ curso para fazer isso funcionar corretamente :)
 - Mostre no console o nome no formato slug, e o resultado final. Use um
 console.log para cada formato.
 */
-console.log( '\nNome convertido à partir de um slug:' );
+var fullName = 'edimilson-santos-pereira-junior';
+console.log( '\nNome em forma de slug:', fullName );
+var newFullName = fullName.split('-').map((el) => {
+    return el = el[0].toUpperCase() + el.slice(1);
+}).join(' ');
+
+
+console.log( '\nNome convertido à partir de um slug:', newFullName );
 // ?
 
 /*
@@ -40,21 +54,31 @@ O resultado final deve ficar mais ou menos assim:
 - Detalhe: o código abaixo deve funcionar com um array de qualquer tamanho.
 5 nomes foi somente uma sugestão ;)
 */
-console.log( '\nMeus amigos:' );
+var friends = [ 'Paula', 'Roberto', 'José', 'Silvania', 'Yasmin' ];
+var phrase = friends.reduce((accum, el, index) => {
+    var separator = friends.length - 1 === index ? ' e ' : ', ';
+    return accum + separator + el;
+}).concat(' são meus amigos.');
+
+console.log( '\nMeus amigos:', phrase );
 // ?
 
 /*
 Usando o replace(), faça a string "Roberto" virar "Roberta".
 Mostre o resultado no console.
 */
-console.log( '\nEra "Roberto", agora é:' );
+var nameRoberto = 'Roberto';
+var nameRoberta = nameRoberto.replace('to', 'ta')
+console.log( '\nEra "Roberto", agora é:', nameRoberta );
 // ?
 
 /*
 Mostre no console a parte "nando" da string "Fernando". Use o método que
 faz a busca do final para o início da string.
 */
-console.log( '\nParte de uma string:' );
+var nameFernando = 'Fernando';
+var nameErnando = nameFernando.slice(1)
+console.log( '\nParte de uma string:', nameErnando );
 // ?
 
 /*
@@ -66,5 +90,11 @@ e minúsculas.
 de qualquer tamanho, escrito de qualquer forma.
 Ex.: Nomes que deveriam funcionar: "Fernando", "RoBertO", "gabriEla", etc.
 */
-console.log( '\nNome com letras intercaladas entre caixa alta e baixa:' );
+var myName = 'Edimilson';
+var myNewName = [];
+for(var i = 0, len = myName.length; i < len; i++) {
+    myNewName.push(i % 2 === 0 ? myName[i].toUpperCase() : myName[i].toLowerCase())
+}
+console.log( '\nNome com letras intercaladas entre caixa alta e baixa:', myNewName.join('') );
 // ?
+})();
